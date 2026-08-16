@@ -1,0 +1,840 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+h1 {
+    text-align: center;
+    color: #0f172a;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.container > p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+
+/* ========================================
+   DASHBOARD NAVIGATION
+======================================== */
+
+.dashboard-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.dashboard-nav button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.dashboard-nav button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.dashboard-nav button:active {
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   DASHBOARD SECTIONS
+======================================== */
+
+.dashboard-section {
+    display: none;
+    width: 100%;
+}
+
+.dashboard-section.active {
+    display: block;
+}
+
+
+/*
+   Prediction section ko initially visible
+   rakhne ke liye
+*/
+
+#predictionSection {
+    display: block;
+}
+
+
+/* ========================================
+   PREDICTION FORM
+======================================== */
+
+form {
+    width: 100%;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    color: #1e293b;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* ========================================
+   PREDICT BUTTON
+======================================== */
+
+#predictionSection form > button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 9px;
+    background: #16a34a;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#predictionSection form > button[type="submit"]:hover {
+    background: #15803d;
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   RESULT BOX
+======================================== */
+
+.result-box {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.result-box h2 {
+    margin-bottom: 12px;
+}
+
+.result-box h3 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+
+/* Result severity */
+
+.result-box.fatal {
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+.result-box.major {
+    border-color: #f97316;
+    background: #fff7ed;
+}
+
+.result-box.minor {
+    border-color: #16a34a;
+    background: #f0fdf4;
+}
+
+
+/* ========================================
+   CONFIDENCE
+======================================== */
+
+.confidence {
+    margin: 20px 0;
+}
+
+.confidence p {
+    margin-bottom: 8px;
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 20px;
+}
+
+
+/* ========================================
+   ADVICE
+======================================== */
+
+.advice {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   RECOMMENDATIONS
+======================================== */
+
+.recommendations-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.recommendations-box h2 {
+    margin-bottom: 12px;
+}
+
+.recommendations-box ul {
+    padding-left: 22px;
+}
+
+.recommendations-box li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   PREDICTION DETAILS
+======================================== */
+
+.prediction-details {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.prediction-details h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.prediction-details p {
+    margin-bottom: 8px;
+}
+
+
+/* ========================================
+   ANALYTICS
+======================================== */
+
+#analyticsSection {
+    display: none;
+}
+
+.statistics-box,
+.chart-box,
+.analytics-chart-box,
+.pie-chart-box,
+.city-chart-box {
+    background: #f8fafc;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+}
+
+.statistics-box h2,
+.chart-box h2,
+.analytics-chart-box h2,
+.pie-chart-box h2,
+.city-chart-box h2 {
+    margin-bottom: 20px;
+    color: #0f172a;
+}
+
+
+/* ========================================
+   STATISTICS CARDS
+======================================== */
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat-card {
+    padding: 22px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.stat-card p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.stat-card.total {
+    border-top: 5px solid #2563eb;
+}
+
+.stat-card.fatal {
+    border-top: 5px solid #dc2626;
+}
+
+.stat-card.major {
+    border-top: 5px solid #f97316;
+}
+
+.stat-card.minor {
+    border-top: 5px solid #16a34a;
+}
+
+
+/* ========================================
+   SEVERITY BARS
+======================================== */
+
+.severity-item {
+    margin-bottom: 20px;
+}
+
+.severity-item > span {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.severity-bar-bg {
+    width: 100%;
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 7px;
+}
+
+.severity-bar {
+    height: 100%;
+    border-radius: 20px;
+}
+
+.fatal-bar {
+    background: #dc2626;
+}
+
+.major-bar {
+    background: #f97316;
+}
+
+.minor-bar {
+    background: #16a34a;
+}
+
+
+/* ========================================
+   PIE CHART
+======================================== */
+
+.pie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.pie-chart {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.pie-chart::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #f8fafc;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pie-legend {
+    min-width: 220px;
+}
+
+.pie-legend > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.fatal-color {
+    background: #dc2626;
+}
+
+.major-color {
+    background: #f97316;
+}
+
+.minor-color {
+    background: #16a34a;
+}
+
+.pie-legend strong {
+    margin-left: auto;
+}
+
+
+/* ========================================
+   CITY STATISTICS
+======================================== */
+
+.city-bar {
+    margin-bottom: 18px;
+}
+
+.city-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.city-info span {
+    font-weight: 600;
+}
+
+.city-info strong {
+    color: #2563eb;
+}
+
+.city-bar-bg {
+    width: 100%;
+    height: 18px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.city-bar-fill {
+    height: 100%;
+    background: #2563eb;
+    border-radius: 20px;
+}
+
+
+/* ========================================
+   MAP SECTION
+======================================== */
+
+#mapSection {
+    display: none;
+}
+
+.map-box {
+    width: 100%;
+    padding: 22px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.map-box h2 {
+    margin-bottom: 10px;
+}
+
+.map-box p {
+    margin-bottom: 18px;
+    color: #64748b;
+}
+
+
+/*
+   IMPORTANT:
+   Leaflet map ko height dena compulsory hai.
+*/
+
+#accidentMap {
+    width: 100%;
+    height: 550px;
+    min-height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+}
+
+
+/* ========================================
+   MAP LEGEND
+======================================== */
+
+.map-legend {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.8;
+}
+
+.map-legend h4 {
+    margin-bottom: 5px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+.legend-dot.low {
+    background: #16a34a;
+}
+
+.legend-dot.medium {
+    background: #f97316;
+}
+
+.legend-dot.high {
+    background: #dc2626;
+}
+
+
+/* ========================================
+   HISTORY
+======================================== */
+
+#historySection {
+    display: none;
+}
+
+.history-box {
+    width: 100%;
+    background: #f8fafc;
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+}
+
+.history-box h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   HISTORY FILTER
+======================================== */
+
+.history-filter {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.history-filter input,
+.history-filter select {
+    padding: 11px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.history-filter input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.history-filter input:focus,
+.history-filter select:focus {
+    border-color: #2563eb;
+}
+
+
+/* ========================================
+   CLEAR HISTORY BUTTON
+======================================== */
+
+.history-box > form {
+    margin-bottom: 20px;
+}
+
+.history-box > form button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.history-box > form button:hover {
+    background: #b91c1c;
+}
+
+
+/* ========================================
+   HISTORY TABLE
+======================================== */
+
+#historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#historyTable th {
+    background: #1e293b;
+    color: white;
+    padding: 13px 10px;
+    text-align: left;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+#historyTable td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+#historyTable tbody tr:hover {
+    background: #f1f5f9;
+}
+
+
+/* ========================================
+   DELETE BUTTON
+======================================== */
+
+#historyTable .delete-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#historyTable .delete-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* ========================================
+   TABLE RESPONSIVE
+======================================== */
+
+.history-box {
+    overflow-x: auto;
+}
+
+#historyTable {
+    min-width: 1100px;
+}
+
+
+/* ========================================
+   LEAFLET FIX
+======================================== */
+
+.leaflet-container {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.leaflet-popup-content {
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .container {
+        width: 96%;
+        padding: 20px;
+    }
+
+    .statistics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-nav button {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    #accidentMap {
+        height: 450px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE - MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        background: white;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .dashboard-nav {
+        flex-direction: column;
+    }
+
+    .dashboard-nav button {
+        width: 100%;
+    }
+
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pie-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .pie-chart {
+        width: 200px;
+        height: 200px;
+    }
+
+    #accidentMap {
+        height: 400px;
+        min-height: 350px;
+    }
+
+    .history-filter {
+        flex-direction: column;
+    }
+
+    .history-filter input,
+    .history-filter select {
+        width: 100%;
+    }
+}
