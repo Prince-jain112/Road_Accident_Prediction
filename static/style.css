@@ -1,6 +1,7 @@
-/* ========================================
-   RESET
-======================================== */
+/* =========================================
+   ROAD ACCIDENT PREDICTION SYSTEM
+   MODERN PROFESSIONAL DASHBOARD CSS
+========================================= */
 
 * {
     margin: 0;
@@ -8,217 +9,376 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --dark: #0f172a;
+    --dark-2: #1e293b;
+
+    --background: #f1f5f9;
+    --card: #ffffff;
+
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+
+    --fatal: #dc2626;
+    --major: #f97316;
+    --minor: #16a34a;
+
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --radius: 16px;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        var(--background);
+
+    color: var(--text);
     min-height: 100vh;
 }
 
-
-/* ========================================
+/* =========================================
    MAIN CONTAINER
-======================================== */
+========================================= */
 
 .container {
-    width: 95%;
-    max-width: 1400px;
+    width: min(1450px, 94%);
     margin: 30px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
-
-/* ========================================
+/* =========================================
    HEADER
-======================================== */
+========================================= */
 
-h1 {
-    text-align: center;
-    color: #0f172a;
-    margin-bottom: 10px;
-    font-size: 32px;
+.container > h1 {
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e3a8a
+    );
+
+    color: white;
+
+    padding: 28px 32px;
+
+    border-radius: 20px 20px 8px 8px;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    box-shadow: var(--shadow);
+
+    letter-spacing: 0.3px;
 }
 
 .container > p {
-    text-align: center;
-    color: #64748b;
+    background: white;
+
+    padding: 18px 30px;
+
+    color: var(--muted);
+
+    border-radius: 8px 8px 20px 20px;
+
     margin-bottom: 25px;
-    font-size: 16px;
+
+    box-shadow: var(--shadow);
+
+    font-size: 15px;
 }
 
-
-/* ========================================
-   DASHBOARD NAVIGATION
-======================================== */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .dashboard-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
     gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    padding: 15px;
-    background: #f8fafc;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
+
+    background: white;
+
+    padding: 12px;
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 25px;
 }
 
 .dashboard-nav button {
     border: none;
-    background: #2563eb;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
     font-size: 15px;
+
     font-weight: 600;
-    transition: 0.2s ease;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .dashboard-nav button:hover {
-    background: #1d4ed8;
+    background: #eff6ff;
+
+    color: var(--primary);
+
     transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.12);
 }
 
 .dashboard-nav button:active {
-    transform: translateY(0);
+    transform: scale(0.98);
 }
 
-
-/* ========================================
-   DASHBOARD SECTIONS
-======================================== */
+/* =========================================
+   SECTIONS
+========================================= */
 
 .dashboard-section {
     display: none;
-    width: 100%;
+
+    animation: fadeIn 0.3s ease;
 }
 
 .dashboard-section.active {
     display: block;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
 
-/*
-   Prediction section ko initially visible
-   rakhne ke liye
-*/
-
-#predictionSection {
-    display: block;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-
-/* ========================================
+/* =========================================
    PREDICTION FORM
-======================================== */
+========================================= */
 
-form {
-    width: 100%;
+.dashboard-section form[action="/predict"] {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
 }
+
+/* =========================================
+   INPUT GROUP
+========================================= */
 
 .input-group {
-    margin-bottom: 18px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
 }
 
 .input-group label {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: 600;
+    font-size: 13px;
+
+    font-weight: 700;
+
     color: #334155;
 }
 
 .input-group input,
 .input-group select {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background: white;
-    color: #1e293b;
-    font-size: 15px;
+
+    padding: 13px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
     outline: none;
-    transition: 0.2s ease;
+
+    transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .input-group input:focus,
 .input-group select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background: white;
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-
-/* ========================================
+/* =========================================
    PREDICT BUTTON
-======================================== */
+========================================= */
 
-#predictionSection form > button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    margin-top: 5px;
+.dashboard-section form[action="/predict"] > button {
+    grid-column: 1 / -1;
+
     border: none;
-    border-radius: 9px;
-    background: #16a34a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
     color: white;
-    font-size: 17px;
-    font-weight: bold;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
     cursor: pointer;
-    transition: 0.2s ease;
+
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.25);
+
+    transition: all 0.2s ease;
 }
 
-#predictionSection form > button[type="submit"]:hover {
-    background: #15803d;
-    transform: translateY(-1px);
+.dashboard-section form[action="/predict"] > button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(37, 99, 235, 0.35);
 }
 
-
-/* ========================================
+/* =========================================
    RESULT BOX
-======================================== */
+========================================= */
 
 .result-box {
-    margin-top: 30px;
-    padding: 25px;
-    border-radius: 14px;
-    border: 2px solid #e2e8f0;
-    background: #f8fafc;
+    margin-top: 25px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    border-left: 6px solid var(--primary);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.result-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -60px;
+    top: -60px;
+
+    background: rgba(37, 99, 235, 0.05);
+
+    border-radius: 50%;
 }
 
 .result-box h2 {
+    font-size: 20px;
+
     margin-bottom: 12px;
 }
 
 .result-box h3 {
-    font-size: 26px;
+    font-size: 28px;
+
     margin-bottom: 20px;
 }
 
-
-/* Result severity */
+/* Fatal */
 
 .result-box.fatal {
-    border-color: #dc2626;
-    background: #fef2f2;
+    border-left-color: var(--fatal);
 }
+
+.result-box.fatal h3 {
+    color: var(--fatal);
+}
+
+/* Major */
 
 .result-box.major {
-    border-color: #f97316;
-    background: #fff7ed;
+    border-left-color: var(--major);
 }
+
+.result-box.major h3 {
+    color: var(--major);
+}
+
+/* Minor */
 
 .result-box.minor {
-    border-color: #16a34a;
-    background: #f0fdf4;
+    border-left-color: var(--minor);
 }
 
+.result-box.minor h3 {
+    color: var(--minor);
+}
 
-/* ========================================
+/* =========================================
    CONFIDENCE
-======================================== */
+========================================= */
 
 .confidence {
     margin: 20px 0;
@@ -226,48 +386,76 @@ form {
 
 .confidence p {
     margin-bottom: 8px;
+
+    color: #475569;
 }
 
 .confidence-bar {
     width: 100%;
+
     height: 12px;
+
     background: #e2e8f0;
+
     border-radius: 20px;
+
     overflow: hidden;
 }
 
 .confidence-fill {
     height: 100%;
-    background: #2563eb;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+
     border-radius: 20px;
+
+    transition: width 0.5s ease;
 }
 
-
-/* ========================================
+/* =========================================
    ADVICE
-======================================== */
+========================================= */
 
 .advice {
-    margin: 20px 0;
+    margin-top: 20px;
+
     padding: 15px;
-    background: white;
-    border-radius: 8px;
-    line-height: 1.6;
+
+    background: #eff6ff;
+
+    border-radius: 10px;
+
+    color: #1e40af;
+
+    font-weight: 600;
+
+    border: 1px solid #dbeafe;
 }
 
-
-/* ========================================
+/* =========================================
    RECOMMENDATIONS
-======================================== */
+========================================= */
 
 .recommendations-box {
     margin-top: 20px;
+
     padding: 20px;
-    background: white;
-    border-radius: 10px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
 }
 
 .recommendations-box h2 {
+    font-size: 18px;
+
     margin-bottom: 12px;
 }
 
@@ -277,564 +465,701 @@ form {
 
 .recommendations-box li {
     margin-bottom: 8px;
-    line-height: 1.5;
+
+    color: #475569;
 }
 
-
-/* ========================================
+/* =========================================
    PREDICTION DETAILS
-======================================== */
+========================================= */
 
 .prediction-details {
     margin-top: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
 }
 
 .prediction-details h4 {
-    margin-bottom: 15px;
+    grid-column: 1 / -1;
+
     font-size: 18px;
+
+    margin-bottom: 5px;
 }
 
 .prediction-details p {
-    margin-bottom: 8px;
+    background: #f8fafc;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    color: #475569;
+
+    border: 1px solid var(--border);
 }
 
-
-/* ========================================
+/* =========================================
    ANALYTICS
-======================================== */
-
-#analyticsSection {
-    display: none;
-}
+========================================= */
 
 .statistics-box,
 .chart-box,
 .analytics-chart-box,
 .pie-chart-box,
 .city-chart-box {
-    background: #f8fafc;
-    padding: 22px;
-    border-radius: 14px;
-    margin-bottom: 25px;
-    border: 1px solid #e2e8f0;
+    background: white;
+
+    padding: 25px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 22px;
 }
 
 .statistics-box h2,
 .chart-box h2,
-.analytics-chart-box h2,
 .pie-chart-box h2,
 .city-chart-box h2 {
     margin-bottom: 20px;
-    color: #0f172a;
+
+    font-size: 21px;
 }
 
-
-/* ========================================
+/* =========================================
    STATISTICS CARDS
-======================================== */
+========================================= */
 
 .statistics-grid {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
+
     gap: 15px;
 }
 
 .stat-card {
     padding: 22px;
-    border-radius: 12px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    text-align: center;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+
+    background: #f8fafc;
+
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
 }
 
 .stat-card h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 14px;
+
+    color: #64748b;
+
+    margin-bottom: 10px;
 }
 
 .stat-card p {
     font-size: 30px;
-    font-weight: bold;
-}
 
-.stat-card.total {
-    border-top: 5px solid #2563eb;
+    font-weight: 800;
 }
 
 .stat-card.fatal {
-    border-top: 5px solid #dc2626;
+    border-left: 5px solid var(--fatal);
 }
 
 .stat-card.major {
-    border-top: 5px solid #f97316;
+    border-left: 5px solid var(--major);
 }
 
 .stat-card.minor {
-    border-top: 5px solid #16a34a;
+    border-left: 5px solid var(--minor);
 }
 
+.stat-card.total {
+    border-left: 5px solid var(--primary);
+}
 
-/* ========================================
+/* =========================================
    SEVERITY BARS
-======================================== */
+========================================= */
 
 .severity-item {
-    margin-bottom: 20px;
-}
+    display: grid;
 
-.severity-item > span {
-    display: block;
-    margin-bottom: 7px;
-    font-weight: bold;
+    grid-template-columns: 140px 1fr 110px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
 }
 
 .severity-bar-bg {
-    width: 100%;
-    height: 20px;
+    height: 13px;
+
     background: #e2e8f0;
+
     border-radius: 20px;
+
     overflow: hidden;
-    margin-bottom: 7px;
 }
 
 .severity-bar {
     height: 100%;
+
     border-radius: 20px;
 }
 
 .fatal-bar {
-    background: #dc2626;
+    background: var(--fatal);
 }
 
 .major-bar {
-    background: #f97316;
+    background: var(--major);
 }
 
 .minor-bar {
-    background: #16a34a;
+    background: var(--minor);
 }
 
-
-/* ========================================
+/* =========================================
    PIE CHART
-======================================== */
+========================================= */
 
 .pie-container {
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    gap: 50px;
-    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    padding: 20px;
 }
 
 .pie-chart {
     width: 230px;
+
     height: 230px;
+
     border-radius: 50%;
+
     position: relative;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.12);
 }
 
 .pie-chart::after {
     content: "";
+
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background: #f8fafc;
+
+    width: 105px;
+    height: 105px;
+
+    background: white;
+
     border-radius: 50%;
+
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
 }
 
 .pie-legend {
-    min-width: 220px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
 }
 
 .pie-legend > div {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
-    margin-bottom: 15px;
-}
 
-.legend-color {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    border-radius: 4px;
-}
+    min-width: 200px;
 
-.fatal-color {
-    background: #dc2626;
-}
-
-.major-color {
-    background: #f97316;
-}
-
-.minor-color {
-    background: #16a34a;
+    color: #475569;
 }
 
 .pie-legend strong {
     margin-left: auto;
+
+    color: #0f172a;
 }
 
+.legend-color {
+    width: 12px;
+    height: 12px;
 
-/* ========================================
+    border-radius: 4px;
+}
+
+.fatal-color {
+    background: var(--fatal);
+}
+
+.major-color {
+    background: var(--major);
+}
+
+.minor-color {
+    background: var(--minor);
+}
+
+/* =========================================
    CITY STATISTICS
-======================================== */
+========================================= */
 
 .city-bar {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .city-info {
     display: flex;
+
     justify-content: space-between;
+
     margin-bottom: 7px;
-}
 
-.city-info span {
-    font-weight: 600;
-}
+    font-size: 14px;
 
-.city-info strong {
-    color: #2563eb;
+    color: #475569;
 }
 
 .city-bar-bg {
-    width: 100%;
-    height: 18px;
+    height: 11px;
+
     background: #e2e8f0;
+
     border-radius: 20px;
+
     overflow: hidden;
 }
 
 .city-bar-fill {
     height: 100%;
-    background: #2563eb;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+
     border-radius: 20px;
 }
 
-
-/* ========================================
-   MAP SECTION
-======================================== */
-
-#mapSection {
-    display: none;
-}
+/* =========================================
+   MAP
+========================================= */
 
 .map-box {
-    width: 100%;
-    padding: 22px;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
+    background: white;
+
+    padding: 25px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
 }
 
 .map-box h2 {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .map-box p {
+    color: var(--muted);
+
     margin-bottom: 18px;
-    color: #64748b;
 }
-
-
-/*
-   IMPORTANT:
-   Leaflet map ko height dena compulsory hai.
-*/
 
 #accidentMap {
     width: 100%;
-    height: 550px;
-    min-height: 450px;
-    border-radius: 12px;
+
+    height: 600px;
+
+    border-radius: 14px;
+
     overflow: hidden;
-    border: 1px solid #cbd5e1;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(15, 23, 42, 0.03);
 }
 
-
-/* ========================================
+/* =========================================
    MAP LEGEND
-======================================== */
+========================================= */
 
 .map-legend {
     background: white;
+
     padding: 12px 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    line-height: 1.8;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.15);
+
+    color: #334155;
+
+    font-size: 13px;
 }
 
 .map-legend h4 {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .legend-dot {
     display: inline-block;
-    width: 12px;
-    height: 12px;
+
+    width: 10px;
+    height: 10px;
+
     border-radius: 50%;
+
     margin-right: 7px;
 }
 
 .legend-dot.low {
-    background: #16a34a;
+    background: var(--minor);
 }
 
 .legend-dot.medium {
-    background: #f97316;
+    background: var(--major);
 }
 
 .legend-dot.high {
-    background: #dc2626;
+    background: var(--fatal);
 }
 
-
-/* ========================================
+/* =========================================
    HISTORY
-======================================== */
-
-#historySection {
-    display: none;
-}
+========================================= */
 
 .history-box {
-    width: 100%;
-    background: #f8fafc;
-    padding: 22px;
-    border-radius: 14px;
-    border: 1px solid #e2e8f0;
+    background: white;
+
+    padding: 25px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow-x: auto;
 }
 
 .history-box h2 {
     margin-bottom: 20px;
 }
 
-
-/* ========================================
+/* =========================================
    HISTORY FILTER
-======================================== */
+========================================= */
 
 .history-filter {
-    display: flex;
+    display: grid;
+
+    grid-template-columns: 1fr 220px;
+
     gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+
+    margin-bottom: 15px;
 }
 
 .history-filter input,
 .history-filter select {
-    padding: 11px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background: white;
-    font-size: 14px;
-    outline: none;
-}
+    padding: 12px 14px;
 
-.history-filter input {
-    flex: 1;
-    min-width: 220px;
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    outline: none;
+
+    font-size: 14px;
 }
 
 .history-filter input:focus,
 .history-filter select:focus {
-    border-color: #2563eb;
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-
-/* ========================================
+/* =========================================
    CLEAR HISTORY BUTTON
-======================================== */
-
-.history-box > form {
-    margin-bottom: 20px;
-}
+========================================= */
 
 .history-box > form button {
-    background: #dc2626;
-    color: white;
     border: none;
-    padding: 11px 17px;
-    border-radius: 8px;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-weight: 600;
+
     cursor: pointer;
-    font-weight: bold;
+
+    margin-bottom: 18px;
+
+    transition: all 0.2s ease;
 }
 
 .history-box > form button:hover {
-    background: #b91c1c;
+    background: #fecaca;
+
+    transform: translateY(-1px);
 }
 
-
-/* ========================================
+/* =========================================
    HISTORY TABLE
-======================================== */
+========================================= */
 
 #historyTable {
     width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    min-width: 1000px;
+
     overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
 }
 
 #historyTable th {
-    background: #1e293b;
+    background: #0f172a;
+
     color: white;
-    padding: 13px 10px;
+
+    padding: 14px;
+
     text-align: left;
+
     font-size: 13px;
+
     white-space: nowrap;
 }
 
 #historyTable td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 13px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: #475569;
+
     font-size: 13px;
-    white-space: nowrap;
+}
+
+#historyTable tbody tr {
+    background: white;
+
+    transition: background 0.2s ease;
 }
 
 #historyTable tbody tr:hover {
-    background: #f1f5f9;
+    background: #f8fafc;
 }
 
+#historyTable tbody tr:last-child td {
+    border-bottom: none;
+}
 
-/* ========================================
+/* =========================================
    DELETE BUTTON
-======================================== */
+========================================= */
 
-#historyTable .delete-btn {
-    background: #dc2626;
-    color: white;
+.delete-btn {
     border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    padding: 8px 11px;
+
+    border-radius: 8px;
+
     cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
 }
 
-#historyTable .delete-btn:hover {
-    background: #b91c1c;
+.delete-btn:hover {
+    background: #fecaca;
+
+    transform: translateY(-1px);
 }
 
+/* =========================================
+   LEAFLET POPUP
+========================================= */
 
-/* ========================================
-   TABLE RESPONSIVE
-======================================== */
-
-.history-box {
-    overflow-x: auto;
-}
-
-#historyTable {
-    min-width: 1100px;
-}
-
-
-/* ========================================
-   LEAFLET FIX
-======================================== */
-
-.leaflet-container {
-    font-family: Arial, Helvetica, sans-serif;
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
 }
 
 .leaflet-popup-content {
-    line-height: 1.5;
+    margin: 15px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* =========================================
+   SCROLLBAR
+========================================= */
 
-/* ========================================
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* =========================================
    RESPONSIVE - TABLET
-======================================== */
+========================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-    .container {
-        width: 96%;
-        padding: 20px;
+    .dashboard-nav {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .statistics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .dashboard-nav button {
-        flex: 1;
-        min-width: 150px;
+    .dashboard-section form[action="/predict"] {
+        grid-template-columns: 1fr;
     }
 
-    #accidentMap {
-        height: 450px;
+    .prediction-details {
+        grid-template-columns: 1fr;
+    }
+
+    .pie-container {
+        flex-direction: column;
+
+        gap: 30px;
     }
 }
 
-
-/* ========================================
+/* =========================================
    RESPONSIVE - MOBILE
-======================================== */
+========================================= */
 
-@media (max-width: 600px) {
-
-    body {
-        background: white;
-    }
+@media (max-width: 650px) {
 
     .container {
-        width: 100%;
-        margin: 0;
-        padding: 15px;
-        border-radius: 0;
-        box-shadow: none;
+        width: 94%;
+
+        margin: 15px auto;
     }
 
-    h1 {
-        font-size: 24px;
+    .container > h1 {
+        font-size: 22px;
+
+        padding: 22px;
+    }
+
+    .container > p {
+        padding: 15px 20px;
     }
 
     .dashboard-nav {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+
+        padding: 8px;
     }
 
     .dashboard-nav button {
         width: 100%;
+    }
+
+    .dashboard-section form[action="/predict"] {
+        padding: 20px;
     }
 
     .statistics-grid {
         grid-template-columns: 1fr;
     }
 
-    .pie-container {
-        flex-direction: column;
-        gap: 25px;
+    .statistics-box,
+    .chart-box,
+    .analytics-chart-box,
+    .pie-chart-box,
+    .city-chart-box,
+    .map-box,
+    .history-box {
+        padding: 18px;
     }
 
-    .pie-chart {
-        width: 200px;
-        height: 200px;
-    }
+    .severity-item {
+        grid-template-columns: 1fr;
 
-    #accidentMap {
-        height: 400px;
-        min-height: 350px;
+        gap: 6px;
     }
 
     .history-filter {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
-    .history-filter input,
-    .history-filter select {
-        width: 100%;
+    .pie-chart {
+        width: 190px;
+
+        height: 190px;
+    }
+
+    #accidentMap {
+        height: 450px;
     }
 }
